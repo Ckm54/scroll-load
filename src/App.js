@@ -5,7 +5,10 @@ import UseBookSearch from './UseBookSearch';
 function App() {
   const [query, setQuery] = useState('t')
   const [pageNumber, setPageNumber] = useState(1)
-  UseBookSearch(query, pageNumber)
+  const{books,
+        hasMore,
+        loading,
+        error } = UseBookSearch(query, pageNumber)
 
   function handleSearch(e) {
     setQuery(e.target.value)
@@ -14,11 +17,9 @@ function App() {
   return (
     <>
       <input type="text" onChange={handleSearch}/>
-      <div>Title</div>
-      <div>Title</div>
-      <div>Title</div>
-      <div>Loading.....</div>
-      <div>Error</div>
+      {books.map(book => <div key={book}>{book}</div>)}
+      <div>{loading && "Loading....."}</div>
+      <div>{error && "Error"}</div>
     </>
   );
 }
