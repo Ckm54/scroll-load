@@ -16,7 +16,7 @@ function App() {
   }
   return (
     <>
-      <input type="text" onChange={handleSearch}/>
+      <input type="text" value={query} onChange={handleSearch}/>
       {books.map(book => <div key={book}>{book}</div>)}
       <div>{loading && "Loading....."}</div>
       <div>{error && "Error"}</div>
