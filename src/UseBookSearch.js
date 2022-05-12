@@ -9,6 +9,10 @@ export default function UseBookSearch(query, pageNumber) {
   const [hasMore, setHasMore] = useState(false)
 
   useEffect(() => {
+    setBooks([])
+  }, [query])
+
+  useEffect(() => {
     setLoading(true)
     setError(false)
     let cancel;
