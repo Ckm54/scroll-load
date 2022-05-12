@@ -23,7 +23,7 @@ export default function UseBookSearch(query, pageNumber) {
       cancelToken: new axios.CancelToken(c => cancel = c)
     }).then(res => {
       setBooks(prevBooks => [...new Set([...prevBooks, ...res.data.docs.map(book => book.title)])])
-      setHasMore(res.data.doc.length > 0)
+      setHasMore(res.data.docs.length > 0)
       setLoading(false)
     }).catch(e => {
       if(axios.isCancel(e)) return
